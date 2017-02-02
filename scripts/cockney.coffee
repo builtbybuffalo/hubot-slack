@@ -12,4 +12,6 @@ module.exports = (robot) ->
     rep = res.message.text.replace regex, (match) ->
       "*#{phrases[match.toLowerCase()]}*"
 
-    res.send "Cockney Ambassador\r\n\r\n>>> #{rep}"
+    unless rep.indexOf(">>>") > -1
+      rep = ">>> #{rep}"
+    res.send "Cockney Ambassador\r\n\r\n#{rep}"
